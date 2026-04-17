@@ -1,6 +1,6 @@
 :root {
-  --page: #f3ede4;
-  --surface: rgba(255, 252, 247, 0.78);
+  --page: #efe1cf;
+  --surface: rgba(255, 251, 246, 0.8);
   --surface-strong: #fffdf9;
   --text: #171411;
   --muted: #413930;
@@ -144,7 +144,7 @@ select {
 .section__eyebrow,
 .signal-card__label,
 .note-panel__label,
-.feed-item__date,
+.feed-item__stamp,
 .feed-item__kind,
 .feature-card__meta,
 .install-card__label {
@@ -166,8 +166,13 @@ h3 {
 h1 {
   max-width: 16ch;
   font-family: var(--serif);
-  font-size: clamp(3.7rem, 8vw, 7.2rem);
-  line-height: 0.93;
+  font-size: clamp(3.25rem, 6.9vw, 6rem);
+  line-height: 0.94;
+}
+
+.hero__title {
+  max-width: 17ch;
+  font-size: clamp(3rem, 6.2vw, 5.35rem);
 }
 
 h2 {
@@ -472,8 +477,8 @@ code {
     padding-bottom: 32px;
   }
 
-  h1 {
-    font-size: clamp(3rem, 16vw, 4.4rem);
+  .hero__title {
+    font-size: clamp(2.5rem, 12vw, 3.55rem);
   }
 
   h2 {
@@ -496,3 +501,4 @@ code {
     display: grid;
   }
 }
+

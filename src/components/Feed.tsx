@@ -10,15 +10,14 @@ export function Feed({ items }: FeedProps) {
     <Section
       id="research"
       eyebrow="Research / News"
-      title="A manual feed for papers, docs, benchmarks, and notable notebooks."
-      intro="Version one keeps the feed simple: a curated list of links in the repo, ordered on purpose rather than scraped automatically."
+      title="Papers, docs, benchmarks, notebooks, competitions"
       className="section--feed"
     >
       <ol class="feed-list">
         {items.map((item) => (
-          <li class="feed-item" key={`${item.date}-${item.title}`}>
+          <li class="feed-item" key={`${item.kind}-${item.title}`}>
             <div class="feed-item__meta">
-              <p class="feed-item__date">{item.date}</p>
+              <p class="feed-item__stamp">{item.meta}</p>
               <span class="feed-item__kind">{item.kind}</span>
             </div>
             <div class="feed-item__body">

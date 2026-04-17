@@ -14,7 +14,7 @@ export function Hero({ eyebrow, title, summary, supportingText, ctas, signals }:
     <section class="hero" id="top">
       <div class="hero__content">
         <p class="section__eyebrow">{eyebrow}</p>
-        <h1>{title}</h1>
+        <h1 class="hero__title">{title}</h1>
         <p class="hero__summary">{summary}</p>
         <p class="hero__supporting">{supportingText}</p>
         <div class="hero__actions">
