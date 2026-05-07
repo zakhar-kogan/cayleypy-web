@@ -1,36 +1,30 @@
 import { Capabilities } from './components/Capabilities'
+import { CopyCommand } from './components/CopyCommand'
 import { Examples } from './components/Examples'
 import { Feed } from './components/Feed'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
 import { Section } from './components/Section'
-import { feedItems } from './content/feed'
-import {
-  about,
-  capabilities,
-  communityLinks,
-  docsLinks,
-  examples,
-  footerLinks,
-  hero,
-  installCommands,
-  navItems,
-} from './content/site'
+import { feed } from './content/feed'
+import { about, capabilities, community, docs, examples, footer, hero, shell } from './content/site'
 
 export function App() {
   return (
     <div class="site-shell">
+      <a href="#main-content" class="skip-link">
+        Skip to content
+      </a>
       <header class="site-header">
         <div class="site-header__branding">
           <a class="site-brand" href="#top">
             CayleyPy
           </a>
-          <p class="site-header__tag">Large-graph workflows for Cayley and Schreier research.</p>
+          <p class="site-header__tag">{shell.tagline}</p>
         </div>
 
         <nav class="site-nav" aria-label="Primary navigation">
           <ul>
-            {navItems.map((item) => (
+            {shell.navItems.map((item) => (
               <li key={item.label}>
                 <a
                   href={item.href}
@@ -45,54 +39,36 @@ export function App() {
         </nav>
       </header>
 
-      <main class="site-main">
+      <main id="main-content" class="site-main">
         <Hero {...hero} />
 
-        <Section
-          id="about"
-          eyebrow={about.eyebrow}
-          title={about.title}
-          intro="CayleyPy is built for the moment when the graph definition is compact, but the graph itself is too large to store outright."
-        >
+        <Section id="about" eyebrow={about.eyebrow} title={about.title} intro={about.intro}>
           <div class="two-column">
-            <div class="prose-stack">
-              {about.paragraphs.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
+            <div class="prose-stack markdown-copy" dangerouslySetInnerHTML={{ __html: about.bodyHtml }} />
             <aside class="note-panel">
-              <p class="note-panel__label">Why this matters</p>
-              <p>
-                State-transition systems, permutation groups, matrix groups, and puzzles routinely explode past
-                adjacency-list scale. CayleyPy keeps the algebraic structure visible so analysis and search can stay
-                honest about that scale.
-              </p>
+              <p class="note-panel__label">{about.noteLabel}</p>
+              <div class="markdown-copy" dangerouslySetInnerHTML={{ __html: about.noteHtml }} />
             </aside>
           </div>
         </Section>
 
-        <Capabilities items={capabilities} />
-        <Examples items={examples} />
+        <Capabilities content={capabilities} />
+        <Examples content={examples} />
 
-        <Section
-          id="docs"
-          eyebrow="Docs / Installation"
-          title="Start from published docs, install quickly, then go deeper in notebooks and source."
-          intro="This site stays intentionally lightweight. The canonical technical detail lives in the Python repository and its published API documentation."
-        >
+        <Section id="docs" eyebrow={docs.eyebrow} title={docs.title} intro={docs.intro}>
           <div class="resource-layout">
             <article class="install-card">
-              <p class="install-card__label">Install</p>
-              <h3>Use the latest GitHub build or the published package.</h3>
+              <p class="install-card__label">{docs.installLabel}</p>
+              <h3>{docs.installTitle}</h3>
               <div class="install-card__commands">
-                {installCommands.map((command) => (
-                  <code key={command}>{command}</code>
+                {docs.installCommands.map((command) => (
+                  <CopyCommand command={command} key={command} />
                 ))}
               </div>
             </article>
 
             <div class="resource-list">
-              {docsLinks.map((link) => (
+              {docs.links.map((link) => (
                 <article class="resource-card" key={link.title}>
                   <h3>{link.title}</h3>
                   <p>{link.summary}</p>
@@ -105,16 +81,11 @@ export function App() {
           </div>
         </Section>
 
-        <Feed items={feedItems} />
+        <Feed content={feed} />
 
-        <Section
-          id="community"
-          eyebrow="Community / Contribute"
-          title="The project is open, research-driven, and easiest to engage through the main repository."
-          intro="For version one, the site points directly to the existing public surfaces instead of creating new community infrastructure here."
-        >
+        <Section id="community" eyebrow={community.eyebrow} title={community.title} intro={community.intro}>
           <div class="resource-list resource-list--three-up">
-            {communityLinks.map((link) => (
+            {community.links.map((link) => (
               <article class="resource-card" key={link.title}>
                 <h3>{link.title}</h3>
                 <p>{link.summary}</p>
@@ -131,7 +102,7 @@ export function App() {
         </Section>
       </main>
 
-      <Footer links={footerLinks} />
+      <Footer eyebrow={footer.eyebrow} note={footer.note} links={footer.links} />
     </div>
   )
 }

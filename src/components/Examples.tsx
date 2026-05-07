@@ -1,20 +1,15 @@
-import type { Example } from '../content/site'
+import type { ExampleSectionContent } from '../content/site'
 import { Section } from './Section'
 
 type ExamplesProps = {
-  items: Example[]
+  content: ExampleSectionContent
 }
 
-export function Examples({ items }: ExamplesProps) {
+export function Examples({ content }: ExamplesProps) {
   return (
-    <Section
-      id="examples"
-      eyebrow="Examples"
-      title="A small set of notebooks is enough to see the library's shape."
-      intro="CayleyPy already has a strong examples footprint. These notebooks are the fastest way to understand the package without absorbing the full codebase at once."
-    >
+    <Section id="examples" eyebrow={content.eyebrow} title={content.title} intro={content.intro}>
       <div class="card-grid card-grid--compact">
-        {items.map((item) => (
+        {content.items.map((item) => (
           <article class="feature-card feature-card--link" key={item.title}>
             <p class="feature-card__meta">{item.meta}</p>
             <h3>{item.title}</h3>

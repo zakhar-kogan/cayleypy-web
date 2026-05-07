@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero Visual Options</title>
+  <style>
+    :root {
+      --text: #171411;
+      --border: rgba(23, 20, 17, 0.2);
+      --accent: #171411;
+    }
+
+    * { margin: 0; box-sizing: border-box; }
+
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: #fffbf6;
+      color: var(--text);
+      padding: 2rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .demos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 3rem;
+    }
+
+    .demo-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      background: white;
+    }
+
+    .demo-card p {
+      font-size: 0.85rem;
+      color: #666;
+      text-align: center;
+      max-width: 280px;
+    }
+
+    .visual-container {
+      width: 280px;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ═══════ 1. Rotating Cayley Graph ═══════ */
+
+    .cayley-graph {
+      width: 240px;
+      height: 240px;
+      animation: spin 20s linear infinite;
+    }
+
+    .cayley-graph line {
+      stroke: var(--text);
+      stroke-width: 0.5;
+      opacity: 0.3;
+    }
+
+    .cayley-graph circle {
+      fill: var(--text);
+    }
+
+    .cayley-graph .node-outer {
+      opacity: 0.5;
+      r: 2;
+    }
+
+    .cayley-graph .node-inner {
+      opacity: 0.8;
+      r: 2.5;
+    }
+
+    .cayley-graph .node-center {
+      r: 3.5;
+      opacity: 1;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ═══════ 2. BFS Wavefront ═══════ */
+
+    .bfs-grid {
+      width: 240px;
+      height: 240px;
+    }
+
+    .bfs-grid circle {
+      fill: var(--text);
+      opacity: 0.12;
+      animation: pulse 3s ease-out infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.12; r: 3; }
+      20% { opacity: 0.7; r: 4.5; }
+      100% { opacity: 0.12; r: 3; }
+    }
+
+    /* ═══════ 3. Random Walk Trail ═══════ */
+
+    .random-walk {
+      width: 240px;
+      height: 240px;
+    }
+
+    .random-walk .trail {
+      fill: none;
+      stroke: var(--text);
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 800;
+      stroke-dashoffset: 800;
+      animation: draw 4s ease-in-out infinite;
+    }
+
+    .random-walk .head {
+      fill: var(--text);
+      r: 3.5;
+      opacity: 0;
+      animation: appear 4s ease-in-out infinite;
+    }
+
+    .random-walk .lattice {
+      fill: var(--text);
+      opacity: 0.08;
+    }
+
+    @keyframes draw {
+      0% { stroke-dashoffset: 800; opacity: 0.8; }
+      70% { stroke-dashoffset: 0; opacity: 0.8; }
+      85% { stroke-dashoffset: 0; opacity: 0; }
+      100% { stroke-dashoffset: 800; opacity: 0; }
+    }
+
+    @keyframes appear {
+      0% { opacity: 0; }
+      10% { opacity: 0.9; }
+      70% { opacity: 0.9; }
+      85% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="demos">
+
+    <!-- 1. Rotating Cayley Graph -->
+    <div class="demo-card">
+      <h2>1. Rotating Cayley Graph</h2>
+      <div class="visual-container">
+        <svg class="cayley-graph" viewBox="-50 -50 100 100">
+          <!-- Outer ring (12 nodes) -->
+          <g class="edges">
+            <line x1="0" y1="-40" x2="20" y2="-34.6"/>
+            <line x1="20" y1="-34.6" x2="34.6" y2="-20"/>
+            <line x1="34.6" y1="-20" x2="40" y2="0"/>
+            <line x1="40" y1="0" x2="34.6" y2="20"/>
+            <line x1="34.6" y1="20" x2="20" y2="34.6"/>
+            <line x1="20" y1="34.6" x2="0" y2="40"/>
+            <line x1="0" y1="40" x2="-20" y2="34.6"/>
+            <line x1="-20" y1="34.6" x2="-34.6" y2="20"/>
+            <line x1="-34.6" y1="20" x2="-40" y2="0"/>
+            <line x1="-40" y1="0" x2="-34.6" y2="-20"/>
+            <line x1="-34.6" y1="-20" x2="-20" y2="-34.6"/>
+            <line x1="-20" y1="-34.6" x2="0" y2="-40"/>
+            <!-- Inner ring (6 nodes) -->
+            <line x1="0" y1="-20" x2="17.3" y2="-10"/>
+            <line x1="17.3" y1="-10" x2="17.3" y2="10"/>
+            <line x1="17.3" y1="10" x2="0" y2="20"/>
+            <line x1="0" y1="20" x2="-17.3" y2="10"/>
+            <line x1="-17.3" y1="10" x2="-17.3" y2="-10"/>
+            <line x1="-17.3" y1="-10" x2="0" y2="-20"/>
+            <!-- Spokes connecting inner to outer -->
+            <line x1="0" y1="-20" x2="0" y2="-40"/>
+            <line x1="17.3" y1="-10" x2="34.6" y2="-20"/>
+            <line x1="17.3" y1="10" x2="34.6" y2="20"/>
+            <line x1="0" y1="20" x2="0" y2="40"/>
+            <line x1="-17.3" y1="10" x2="-34.6" y2="20"/>
+            <line x1="-17.3" y1="-10" x2="-34.6" y2="-20"/>
+            <!-- Cross spokes -->
+            <line x1="0" y1="-20" x2="20" y2="-34.6"/>
+            <line x1="17.3" y1="-10" x2="40" y2="0"/>
+            <line x1="17.3" y1="10" x2="20" y2="34.6"/>
+            <line x1="0" y1="20" x2="-20" y2="34.6"/>
+            <line x1="-17.3" y1="10" x2="-40" y2="0"/>
+            <line x1="-17.3" y1="-10" x2="-20" y2="-34.6"/>
+            <!-- Center connections -->
+            <line x1="0" y1="0" x2="0" y2="-20"/>
+            <line x1="0" y1="0" x2="17.3" y2="-10"/>
+            <line x1="0" y1="0" x2="17.3" y2="10"/>
+            <line x1="0" y1="0" x2="0" y2="20"/>
+            <line x1="0" y1="0" x2="-17.3" y2="10"/>
+            <line x1="0" y1="0" x2="-17.3" y2="-10"/>
+          </g>
+          <g class="nodes">
+            <!-- Outer ring -->
+            <circle class="node-outer" cx="0" cy="-40"/>
+            <circle class="node-outer" cx="20" cy="-34.6"/>
+            <circle class="node-outer" cx="34.6" cy="-20"/>
+            <circle class="node-outer" cx="40" cy="0"/>
+            <circle class="node-outer" cx="34.6" cy="20"/>
+            <circle class="node-outer" cx="20" cy="34.6"/>
+            <circle class="node-outer" cx="0" cy="40"/>
+            <circle class="node-outer" cx="-20" cy="34.6"/>
+            <circle class="node-outer" cx="-34.6" cy="20"/>
+            <circle class="node-outer" cx="-40" cy="0"/>
+            <circle class="node-outer" cx="-34.6" cy="-20"/>
+            <circle class="node-outer" cx="-20" cy="-34.6"/>
+            <!-- Inner ring -->
+            <circle class="node-inner" cx="0" cy="-20"/>
+            <circle class="node-inner" cx="17.3" cy="-10"/>
+            <circle class="node-inner" cx="17.3" cy="10"/>
+            <circle class="node-inner" cx="0" cy="20"/>
+            <circle class="node-inner" cx="-17.3" cy="10"/>
+            <circle class="node-inner" cx="-17.3" cy="-10"/>
+            <!-- Center -->
+            <circle class="node-center" cx="0" cy="0"/>
+          </g>
+        </svg>
+      </div>
+      <p>Slowly rotating graph wireframe. Pure SVG + CSS. ~19 nodes, recognizably "Cayley graph".</p>
+    </div>
+
+    <!-- 2. BFS Wavefront -->
+    <div class="demo-card">
+      <h2>2. BFS Wavefront Pulse</h2>
+      <div class="visual-container">
+        <svg class="bfs-grid" viewBox="0 0 240 240">
+          <script>
+            // Generate grid dots with staggered delay based on distance from center
+            const svg = document.querySelector('.bfs-grid');
+            const cx = 120, cy = 120, spacing = 24;
+            for (let x = spacing; x < 240; x += spacing) {
+              for (let y = spacing; y < 240; y += spacing) {
+                const dist = Math.sqrt((x - cx) ** 2 + (y - cy) ** 2);
+                const delay = (dist / 140) * 3; // 3s cycle, delay proportional to distance
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', x);
+                circle.setAttribute('cy', y);
+                circle.setAttribute('r', '3');
+                circle.style.animationDelay = `${delay.toFixed(2)}s`;
+                svg.appendChild(circle);
+              }
+            }
+          </script>
+        </svg>
+      </div>
+      <p>Radiating pulse from center. Pure CSS animation with staggered delays. Communicates "search expanding outward".</p>
+    </div>
+
+    <!-- 3. Random Walk Trail -->
+    <div class="demo-card">
+      <h2>3. Random Walk Trail</h2>
+      <div class="visual-container">
+        <svg class="random-walk" viewBox="0 0 240 240">
+          <!-- Lattice dots -->
+          <g class="lattice-dots">
+            <script>
+              const rwSvg = document.querySelector('.random-walk');
+              const latticeG = rwSvg.querySelector('.lattice-dots');
+              for (let x = 20; x <= 220; x += 20) {
+                for (let y = 20; y <= 220; y += 20) {
+                  const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                  c.setAttribute('cx', x);
+                  c.setAttribute('cy', y);
+                  c.setAttribute('r', '1.5');
+                  c.classList.add('lattice');
+                  latticeG.appendChild(c);
+                }
+              }
+            </script>
+          </g>
+          <!-- Pre-baked random walk path on a 20px lattice -->
+          <path class="trail" d="M120,120 L120,100 L140,100 L140,80 L160,80 L160,100 L160,120 L180,120 L180,140 L160,140 L160,160 L140,160 L140,140 L120,140 L100,140 L100,120 L80,120 L80,100 L80,80 L60,80 L60,60 L80,60 L100,60 L100,40 L120,40 L140,40 L140,60 L160,60 L180,60 L180,80 L200,80 L200,100 L200,120 L200,140 L180,140 L180,160 L180,180 L160,180 L140,180 L120,180 L100,180 L100,160 L80,160 L60,160 L60,140 L60,120"/>
+          <!-- Head dot that follows the path end -->
+          <circle class="head" cx="60" cy="120" r="3.5"/>
+        </svg>
+      </div>
+      <p>Self-drawing path on a lattice grid. Single SVG path with stroke-dashoffset animation. Loops every 4s.</p>
+    </div>
+
+  </div>
+</body>
+</html>

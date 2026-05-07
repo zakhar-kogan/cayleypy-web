@@ -1,13 +1,6 @@
-import type { CallToAction, Signal } from '../content/site'
-
-type HeroProps = {
-  eyebrow: string
-  title: string
-  summary: string
-  supportingText: string
-  ctas: CallToAction[]
-  signals: Signal[]
-}
+import type { HeroContent } from '../content/site'
+import { HeroVisual } from './HeroVisual'
+type HeroProps = HeroContent
 
 export function Hero({ eyebrow, title, summary, supportingText, ctas, signals }: HeroProps) {
   return (
@@ -31,6 +24,7 @@ export function Hero({ eyebrow, title, summary, supportingText, ctas, signals }:
           ))}
         </div>
       </div>
+
       <div class="signal-grid" aria-label="Project highlights">
         {signals.map((signal) => (
           <article class="signal-card" key={signal.label}>
@@ -40,6 +34,7 @@ export function Hero({ eyebrow, title, summary, supportingText, ctas, signals }:
           </article>
         ))}
       </div>
+      <HeroVisual />
     </section>
   )
 }
