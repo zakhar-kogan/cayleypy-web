@@ -10,7 +10,7 @@ navItems:
   - label: Examples
     href: '#examples'
   - label: Visualizations
-    href: visualizations/gallery.html
+    href: '#visualizations'
   - label: Docs
     href: https://cayleypy.github.io/cayleypy-docs/api.html
     external: true
@@ -29,5 +29,5 @@ footerLinks:
     href: '#examples'
   - title: Visualizations
     summary: Interactive graph and puzzle gallery.
-    href: visualizations/gallery.html
+    href: '#visualizations'
 ---

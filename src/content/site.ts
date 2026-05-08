@@ -6,6 +6,7 @@ import docsSource from './sections/docs.md?raw'
 import examplesSource from './sections/examples.md?raw'
 import heroSource from './sections/hero.md?raw'
 import shellSource from './sections/shell.md?raw'
+import visualizationsSource from './sections/visualizations.md?raw'
 
 export type NavItem = {
   label: string
@@ -38,6 +39,15 @@ export type Example = {
   meta: string
   external?: boolean
   linkLabel?: string
+}
+
+export type VisualizationLink = {
+  title: string
+  summary: string
+  href: string
+  meta: string
+  external?: boolean
+  linkLabel: string
 }
 
 export type ResourceLink = {
@@ -86,6 +96,13 @@ export type ExampleSectionContent = {
   items: Example[]
 }
 
+export type VisualizationSectionContent = {
+  eyebrow: string
+  title: string
+  intro: string
+  items: VisualizationLink[]
+}
+
 export type DocsContent = {
   eyebrow: string
   title: string
@@ -116,6 +133,7 @@ const heroDocument = parseMarkdownDocument<HeroContent>(heroSource)
 const aboutDocument = parseMarkdownDocument<AboutFrontmatter>(aboutSource)
 const capabilitiesDocument = parseMarkdownDocument<CapabilitySectionContent>(capabilitiesSource)
 const examplesDocument = parseMarkdownDocument<ExampleSectionContent>(examplesSource)
+const visualizationsDocument = parseMarkdownDocument<VisualizationSectionContent>(visualizationsSource)
 const docsDocument = parseMarkdownDocument<DocsContent>(docsSource)
 const communityDocument = parseMarkdownDocument<CommunityContent>(communitySource)
 
@@ -131,6 +149,7 @@ export const about: AboutContent = {
 }
 export const capabilities = capabilitiesDocument.data
 export const examples = examplesDocument.data
+export const visualizations = visualizationsDocument.data
 export const docs = docsDocument.data
 export const community = communityDocument.data
 export const footer = {

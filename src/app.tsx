@@ -5,8 +5,9 @@ import { Feed } from './components/Feed'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
 import { Section } from './components/Section'
+import { Visualizations } from './components/Visualizations'
 import { feed } from './content/feed'
-import { about, capabilities, community, docs, examples, footer, hero, shell } from './content/site'
+import { about, capabilities, community, docs, examples, footer, hero, shell, visualizations } from './content/site'
 
 export function App() {
   return (
@@ -54,6 +55,7 @@ export function App() {
 
         <Capabilities content={capabilities} />
         <Examples content={examples} />
+        <Visualizations content={visualizations} />
 
         <Section id="docs" eyebrow={docs.eyebrow} title={docs.title} intro={docs.intro}>
           <div class="resource-layout">

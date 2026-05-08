@@ -39,8 +39,10 @@ npm run preview
 
 Version one keeps content manual and code-adjacent.
 
-- Site copy and links live in `src/content/site.ts`
-- Research/news feed items live in `src/content/feed.ts`
+- Section schemas and exports live in `src/content/site.ts`
+- Section copy and cards live in `src/content/sections/*.md`
+- Research/news feed items live in `src/content/sections/feed.md`
+- Local standalone visualizations live under `public/visualizations/`; add their catalog cards in `src/content/sections/visualizations.md`
 
 Edit those files to update hero copy, examples, docs links, or feed entries.
 

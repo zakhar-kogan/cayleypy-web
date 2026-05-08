@@ -27,15 +27,4 @@ items:
     meta: Benchmark notebook
     external: true
     linkLabel: Open notebook
-  - title: Cayley graph gallery
-    summary: Explore browser-rendered Cayley graph and puzzle visualizations with paths, random walks, and generator controls.
-    href: visualizations/gallery.html
-    meta: Interactive visualization
-    linkLabel: Open gallery
-  - title: Cube solver demo
-    summary: Try the standalone Rubik's cube solver demo powered by browser-side search and a compact learned heuristic.
-    href: https://qdiag.xyz/cube/
-    meta: External visualization
-    external: true
-    linkLabel: Open cube solver
 ---
