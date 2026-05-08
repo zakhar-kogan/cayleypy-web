@@ -14,8 +14,8 @@ export function Examples({ content }: ExamplesProps) {
             <p class="feature-card__meta">{item.meta}</p>
             <h3>{item.title}</h3>
             <p>{item.summary}</p>
-            <a href={item.href} target="_blank" rel="noreferrer">
-              Open notebook
+            <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noreferrer' : undefined}>
+              {item.linkLabel ?? 'Open resource'}
             </a>
           </article>
         ))}

@@ -7,16 +7,35 @@ items:
     summary: Define permutation and matrix-group graphs, run BFS, and export explicit NetworkX views for smaller slices.
     href: https://www.kaggle.com/code/fedimser/cayleypy-demo
     meta: Kaggle notebook
+    external: true
+    linkLabel: Open notebook
   - title: Beam search with CayleyPy
     summary: A concise pathfinding example for LRX using beam search and a neural-network predictor.
     href: https://www.kaggle.com/code/fedimser/beam-search-with-cayleypy
     meta: Kaggle notebook
+    external: true
+    linkLabel: Open notebook
   - title: Computing spectra
     summary: Compute spectra of Cayley graphs with the library rather than building bespoke analysis scripts.
     href: https://www.kaggle.com/code/fedimser/computing-spectra-of-cayley-graphs-using-cayleypy
     meta: Kaggle notebook
+    external: true
+    linkLabel: Open notebook
   - title: Benchmark BFS on GPU
     summary: Compare BFS performance on GPU hardware and understand where acceleration is worth the complexity.
     href: https://www.kaggle.com/code/fedimser/benchmark-bfs-in-cayleypy-on-gpu-p100
     meta: Benchmark notebook
+    external: true
+    linkLabel: Open notebook
+  - title: Cayley graph gallery
+    summary: Explore browser-rendered Cayley graph and puzzle visualizations with paths, random walks, and generator controls.
+    href: visualizations/gallery.html
+    meta: Interactive visualization
+    linkLabel: Open gallery
+  - title: Cube solver demo
+    summary: Try the standalone Rubik's cube solver demo powered by browser-side search and a compact learned heuristic.
+    href: https://qdiag.xyz/cube/
+    meta: External visualization
+    external: true
+    linkLabel: Open cube solver
 ---

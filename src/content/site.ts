@@ -36,6 +36,8 @@ export type Example = {
   summary: string
   href: string
   meta: string
+  external?: boolean
+  linkLabel?: string
 }
 
 export type ResourceLink = {

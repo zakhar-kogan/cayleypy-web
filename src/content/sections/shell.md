@@ -9,6 +9,8 @@ navItems:
     href: '#research'
   - label: Examples
     href: '#examples'
+  - label: Visualizations
+    href: visualizations/gallery.html
   - label: Docs
     href: https://cayleypy.github.io/cayleypy-docs/api.html
     external: true
@@ -25,4 +27,7 @@ footerLinks:
   - title: Examples
     summary: Curated Kaggle notebooks.
     href: '#examples'
+  - title: Visualizations
+    summary: Interactive graph and puzzle gallery.
+    href: visualizations/gallery.html
 ---
